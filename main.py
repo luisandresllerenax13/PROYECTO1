@@ -83,3 +83,15 @@ def ejecutar_proyecto(total_registros: int = 100_000) -> None:
     tiempo_lin = (time.perf_counter() - t_inicio) * 1000
     print(f"[1] Búsqueda Lineal:")
     print(f"    - Índice encontrado: {idx_lin}")
+
+t_inicio = time.perf_counter()
+    idx_bin, comp_bin = Busqueda.busqueda_binaria(datos_ordenados, objetivo)
+    tiempo_bin = (time.perf_counter() - t_inicio) * 1000
+    print(f"[2] Búsqueda Binaria:")
+    print(f"    - Índice encontrado: {idx_bin}")
+    print(f"    - Comparaciones realizadas: {comp_bin:,}")
+    print(f"    - Tiempo de ejecución: {tiempo_bin:.6f} ms\n")
+
+    encontrado, comp_h, tiempo_hash = Busqueda.busqueda_tabla_hash(tabla_hash, objetivo)
+    print(f"[3] Tabla Hash (Diccionario):")
+    print(f"    - ¿Encontrado?: {encontrado}")
