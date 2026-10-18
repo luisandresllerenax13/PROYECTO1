@@ -61,3 +61,25 @@ def ejecutar_proyecto(total_registros: int = 100_000) -> None:
         raise TypeError("total_registros debe ser un número entero")
     if not 1 <= total_registros <= 999_999:
         raise ValueError("total_registros debe estar entre 1 y 999,999")
+
+    print("================================================================")
+    print("      COMPARATIVA DE ALGORITMOS DE BÚSQUEDA (EQUIPO 3)        ")
+    print("================================================================")
+    
+    
+    print(f"Generando {total_registros:,} registros aleatorios...")
+    
+    datos_desordenados = random.sample(range(1, 1000000), total_registros)
+    datos_ordenados = sorted(datos_desordenados)
+    tabla_hash = {val: f"Libro_Item_{val}" for val in datos_desordenados}
+    
+    
+    objetivo = datos_ordenados[int(total_registros * 0.85)]
+    print(f"Elemento objetivo a buscar: {objetivo}\n")
+    
+    
+    t_inicio = time.perf_counter()
+    idx_lin, comp_lin = Busqueda.busqueda_lineal(datos_desordenados, objetivo)
+    tiempo_lin = (time.perf_counter() - t_inicio) * 1000
+    print(f"[1] Búsqueda Lineal:")
+    print(f"    - Índice encontrado: {idx_lin}")
