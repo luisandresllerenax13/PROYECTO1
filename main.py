@@ -40,3 +40,24 @@ class Busqueda:
                 derecha = medio - 1
 
         return -1, comparaciones
+
+    @staticmethod
+    def busqueda_tabla_hash(
+        tabla_hash: Mapping[int, object], objetivo: int
+    ) -> tuple[bool, int, float]:
+        if not isinstance(tabla_hash, Mapping):
+            raise TypeError("tabla_hash debe ser un mapeo, por ejemplo un diccionario")
+        if isinstance(objetivo, bool) or not isinstance(objetivo, int):
+            raise TypeError("objetivo debe ser un número entero")
+
+        inicio = time.perf_counter()
+        encontrado = objetivo in tabla_hash
+        tiempo_ms = (time.perf_counter() - inicio) * 1000
+        return encontrado, 1, tiempo_ms
+
+
+def ejecutar_proyecto(total_registros: int = 100_000) -> None:
+    if isinstance(total_registros, bool) or not isinstance(total_registros, int):
+        raise TypeError("total_registros debe ser un número entero")
+    if not 1 <= total_registros <= 999_999:
+        raise ValueError("total_registros debe estar entre 1 y 999,999")
