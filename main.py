@@ -95,3 +95,13 @@ t_inicio = time.perf_counter()
     encontrado, comp_h, tiempo_hash = Busqueda.busqueda_tabla_hash(tabla_hash, objetivo)
     print(f"[3] Tabla Hash (Diccionario):")
     print(f"    - ¿Encontrado?: {encontrado}")
+    print(f"    - Accesos / Operaciones: {comp_h}")
+    print(f"    - Tiempo de ejecución: {tiempo_hash:.6f} ms\n")
+    print("================================================================")
+
+
+if __name__ == "__main__":
+    try:
+        ejecutar_proyecto()
+    except (TypeError, ValueError) as error:
+        print(f"Error al ejecutar el proyecto: {error}")
