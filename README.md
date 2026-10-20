@@ -88,17 +88,15 @@ import time
 
 def busqueda_lineal(arr, objetivo):
 
-    comparaciones = 0
+   Busqueda._validar_entrada(arr, objetivo)
+        comparaciones = 0
+        for i, valor in enumerate(arr):
+            comparaciones += 1
+            if valor == objetivo:
+                return i, comparaciones
+        return -1, comparaciones
 
-    for i in range(len(arr)):
-
-        comparaciones += 1
-
-        if arr[i] == objetivo:
-
-            return i, comparaciones
-
-    return -1, comparaciones
+        
 
 def busqueda_binaria(arr, objetivo):
 
